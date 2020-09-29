@@ -12,13 +12,22 @@ class ViewControl extends React.Component {
     }
   }
 
+  handleSelectingCreateCustomInventoryForm = () => {
+    this.setState({
+      viewingHomePage: false,
+      creatingDialyInventoryForm: true
+    })
+  }
+
   render(){
     let currentlyVisibleState = null;
 
     if(this.state.creatingDialyInventoryForm){
       currentlyVisibleState = <NewDailyInventoryForm/>
     } else if (this.state.viewingHomePage){
-      currentlyVisibleState = <HomePage/>
+      currentlyVisibleState = <HomePage 
+      onSelectingCreateCustomInventoryForm={this.state.handleSelectingCreateCustomInventoryForm}
+      />
     }
       return(
         <React.Fragment>

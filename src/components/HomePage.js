@@ -1,6 +1,6 @@
 import React from 'react';
 
-function HomePage(){
+function HomePage(props){
   return(
     <React.Fragment>
       <h4>Calendar:</h4>
@@ -9,7 +9,7 @@ function HomePage(){
   
       <h4>Daily inventory:</h4>
       <button>fill out your daily inventory form</button>
-      <button>create custom inventory form</button>
+      <button onClick={props.onSelectingCreateCustomInventoryForm}>create custom inventory form</button>
   
       <h4>Other:</h4>
       <button>learn how to best use this application</button>
@@ -17,6 +17,5 @@ function HomePage(){
     </React.Fragment>
   )
 }
-
 export default HomePage;
 
