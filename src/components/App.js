@@ -1,8 +1,9 @@
 import React from 'react';
+import ViewControl from './ViewControl';
 
 function App() {
   return (
-    <h1>Hello world!</h1>
+    <ViewControl/>
   );
 }
 
