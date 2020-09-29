@@ -1,4 +1,5 @@
 import React from 'react';
+import HomePage from './HomePage'
 import NewDailyInventoryForm from './daily-inventory/NewDailyInventoryForm'
 
 class ViewControl extends React.Component {
@@ -6,7 +7,8 @@ class ViewControl extends React.Component {
   constructor(){
     super();
     this.state = {
-      creatingDialyInventoryForm: true
+      creatingDialyInventoryForm: false,
+      viewingHomePage: true
     }
   }
 
@@ -15,6 +17,8 @@ class ViewControl extends React.Component {
 
     if(this.state.creatingDialyInventoryForm){
       currentlyVisibleState = <NewDailyInventoryForm/>
+    } else if (this.state.viewingHomePage){
+      currentlyVisibleState = <HomePage/>
     }
       return(
         <React.Fragment>

@@ -52,13 +52,23 @@ npm install react-redux-firebase redux-firestore
 
 create ViewControl
 
+create HomePage
+
 create all components in daily-inventory directory using only shared and local state
 
 integrate redux
 
 integrate firestore
 
-create all components in calendar directory
+create all components in calendar directory using the firestore off the bat
+
+create SignInGate and CreateProfile component and make sure they are working correctly
+
+style and polish
+
+make sure readme is all up to date and polished
+
+create demonstration video and get pitch down
 
 #### eventual index.js
 <!-- 
