@@ -36,3 +36,14 @@ This is a list of all of the components I will need to complete my application:
 * EditDailyInventoryForm
 * Response
 * ResponseList
+
+
+## Commands I have used so far
+
+npm create-react-app hack-your-health
+
+npm install
+
+npm install firebase
+
+npm install react-redux-firebase redux-firestore
