@@ -48,6 +48,19 @@ npm install firebase
 
 npm install react-redux-firebase redux-firestore
 
+## Production flow
+
+create ViewControl
+
+create all components in daily-inventory directory using only shared and local state
+
+integrate redux
+
+integrate firestore
+
+create all components in calendar directory
+
+#### eventual index.js
 <!-- 
 import React from 'react';
 import ReactDOM from 'react-dom';
