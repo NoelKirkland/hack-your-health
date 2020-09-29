@@ -47,3 +47,30 @@ npm install
 npm install firebase
 
 npm install react-redux-firebase redux-firestore
+
+<!-- 
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './components/App';
+import { ReactReduxFirebaseProvider } from 'react-redux-firebase';
+import { createFirestoreInstance } from 'redux-firestore';
+import firebase from "./firebase";
+import { firestoreReducer } from 'redux-firestore';
+
+const store = CREATE STORE COMES FROM REDUX SO I MIGHT NEED TO IMPLEMENT THAT IN ORDER FOR THIS WHOLE THING TO WORK
+const rrfProps = {
+  firebase,
+  config: {
+        userProfile: "users"
+    },
+  dispatch: store.dispatch,
+  createFirestoreInstance
+}
+
+ReactDOM.render(
+    <ReactReduxFirebaseProvider {...rrfProps}>
+      <App />
+    </ReactReduxFirebaseProvider>,
+  document.getElementById('root')
+)
+ -->
