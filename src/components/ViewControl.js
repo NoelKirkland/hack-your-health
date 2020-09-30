@@ -7,15 +7,16 @@ class ViewControl extends React.Component {
   constructor(){
     super();
     this.state = {
-      creatingDialyInventoryForm: false,
+      creatingDailyInventoryForm: false,
       viewingHomePage: true
     }
   }
 
   handleSelectingCreateCustomInventoryForm = () => {
+    console.log("handleSelectingCreateCustomInventoryForm is triggered");
     this.setState({
-      viewingHomePage: false,
-      creatingDialyInventoryForm: true
+      creatingDialyInventoryForm: true,
+      viewingHomePage: false
     })
   }
 
@@ -26,7 +27,7 @@ class ViewControl extends React.Component {
       currentlyVisibleState = <NewDailyInventoryForm/>
     } else if (this.state.viewingHomePage){
       currentlyVisibleState = <HomePage 
-      onSelectingCreateCustomInventoryForm={this.state.handleSelectingCreateCustomInventoryForm}
+      onSelectingCreateCustomInventoryForm={this.handleSelectingCreateCustomInventoryForm}
       />
     }
       return(

@@ -1,6 +1,9 @@
 import React from 'react';
+import PropTypes from "prop-types";
+
 
 function HomePage(props){
+
   return(
     <React.Fragment>
       <h4>Calendar:</h4>
@@ -16,6 +19,10 @@ function HomePage(props){
       <button>sign out</button>
     </React.Fragment>
   )
+}
+
+HomePage.propTypes = {
+  onSelectingCreateCustomInventoryForm: PropTypes.func
 }
 export default HomePage;
 
