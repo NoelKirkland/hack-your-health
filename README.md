@@ -69,6 +69,8 @@ npm install react-redux-firebase redux-firestore
 
 npm install redux
 
+npm install react-router-dom
+
 ## Production flow
 
 create ViewControl
