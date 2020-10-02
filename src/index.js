@@ -6,6 +6,7 @@ import { ReactReduxFirebaseProvider } from 'react-redux-firebase';
 import { createFirestoreInstance } from 'redux-firestore';
 import firebase from "./firebase";
 import { firestoreReducer } from 'redux-firestore';
+import 'firebase/auth';
 
 const store = createStore(firestoreReducer);
 const rrfProps = {
