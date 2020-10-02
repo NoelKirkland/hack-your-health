@@ -67,6 +67,8 @@ npm install firebase
 
 npm install react-redux-firebase redux-firestore
 
+npm install redux
+
 ## Production flow
 
 create ViewControl
@@ -88,3 +90,31 @@ style and polish
 make sure readme is all up to date and polished
 
 create demonstration video and get pitch down
+
+#### eventual index.js
+<!-- 
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './components/App';
+import { ReactReduxFirebaseProvider } from 'react-redux-firebase';
+import { createFirestoreInstance } from 'redux-firestore';
+import firebase from "./firebase";
+import { firestoreReducer } from 'redux-firestore';
+
+const store = CREATE STORE COMES FROM REDUX SO I MIGHT NEED TO IMPLEMENT THAT IN ORDER FOR THIS WHOLE THING TO WORK
+const rrfProps = {
+  firebase,
+  config: {
+        userProfile: "users"
+    },
+  dispatch: store.dispatch,
+  createFirestoreInstance
+}
+
+ReactDOM.render(
+    <ReactReduxFirebaseProvider {...rrfProps}>
+      <App />
+    </ReactReduxFirebaseProvider>,
+  document.getElementById('root')
+)
+ -->
