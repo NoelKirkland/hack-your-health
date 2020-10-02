@@ -71,6 +71,8 @@ npm install redux
 
 npm install react-router-dom
 
+npm install react-redux
+
 ## Production flow
 
 create ViewControl
