@@ -10,7 +10,8 @@ function NewDailyInventoryForm(){
   function addDailyInventoryFormToFirestore(event){
     event.preventDefault();
     
-    return firestore.collection("inventory-forms").add({
+    return firestore.collection("inventoryForms").add({
+      name: event.target.name.value,
       q1: event.target.q1.value,
       q2: event.target.q2.value,
       q3: event.target.q3.value,

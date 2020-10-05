@@ -6,6 +6,10 @@ function ReusableDailyInventoryForm(props){
   return(
     <React.Fragment>
       <form onSubmit={props.formSubmissionHandler}>
+      <input
+        type='text'
+        name='name'
+        placeholder='what would you like this form to be named?' /><br />
         <input
         type='text'
         name='q1'

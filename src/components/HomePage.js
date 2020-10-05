@@ -11,7 +11,7 @@ function HomePage(props){
       <button>create a custom calendar type</button>
   
       <h4>Daily inventory:</h4>
-      <button>fill out your daily inventory form</button>
+      <button onClick={props.onSelectingViewDailyInventoryFormList} >view daily inventory list</button>
       <button onClick={props.onSelectingCreateCustomInventoryForm}>create custom inventory form</button>
   
       <h4>Other:</h4>

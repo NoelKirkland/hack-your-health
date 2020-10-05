@@ -1,7 +1,8 @@
 import React from 'react';
 import HomePage from './HomePage';
 import NewDailyInventoryForm from './daily-inventory/NewDailyInventoryForm';
-import DailyInventory from './daily-inventory/DailyInvetory'
+// import DailyInventory from './daily-inventory/DailyInvetory'
+import DailyInventoryList from './daily-inventory/DailyInventoryList.js'
 import { withFirestore, isLoaded } from "react-redux-firebase";
 import { Link } from "react-router-dom";
 
@@ -11,7 +12,7 @@ class ViewControl extends React.Component {
     super(props);
     this.state = {
       creatingDailyInventoryForm: false,
-      fillingOutDailyInventoryForm: false,
+      viewingDailyInventoryList: false,
       viewingHomePage: true,
       selectedInventoryForm: null
     }
@@ -25,11 +26,20 @@ class ViewControl extends React.Component {
     })
   }
 
-  handleSelectingFillOutYourDailyInventoryForm = (id) => {
+  handleSelectingViewDailyInventoryFormList = () => {
+    this.setState({
+      creatingDailyInventoryForm: false,
+      viewingHomePage: false,
+      viewingDailyInventoryList: true
+    });
+  }
+
+  handleViewingSelectedDailyInventoryForm = (id) => {
     this.props.firestore
-      .get({ collection: "inventory-forms", doc: id })
+      .get({ collection: "inventoryForms", doc: id })
       .then((dailyInventory) => {
         const firestoreInventoryForm = {
+          name: dailyInventory.get("name"),
           q1: dailyInventory.get("q1"),
           q2: dailyInventory.get("q2"),
           q3: dailyInventory.get("q3"),
@@ -37,12 +47,10 @@ class ViewControl extends React.Component {
           q5: dailyInventory.get("q5"),
           q6: dailyInventory.get("q6"),
           q7: dailyInventory.get("q7"),
-          q8: dailyInventory.get("q8")
+          q8: dailyInventory.get("q8"),
+          id: dailyInventory.id
         }
         this.setState({
-          creatingDialyInventoryForm: false,
-          viewingHomePage: false,
-          fillingOutDailyInventoryForm: true,
           selectedInventoryForm: firestoreInventoryForm
       })
     });
@@ -71,13 +79,14 @@ class ViewControl extends React.Component {
   
       if(this.state.creatingDialyInventoryForm){
         currentlyVisibleState = <NewDailyInventoryForm/>
-      } else if(this.state.fillingOutDailyInventoryForm){
-        currentlyVisibleState = <DailyInventory
-          onSelectingFillOutYourDailyInventoryForm={this.handleSelectingFillOutYourDailyInventoryForm}
+      } else if(this.state.viewingDailyInventoryList){
+        currentlyVisibleState = <DailyInventoryList
+          onDailyInventorySelection={this.handleViewingSelectedDailyInventoryForm}
         />
       } else if (this.state.viewingHomePage){
         currentlyVisibleState = <HomePage 
           onSelectingCreateCustomInventoryForm={this.handleSelectingCreateCustomInventoryForm}
+          onSelectingViewDailyInventoryFormList={this.handleSelectingViewDailyInventoryFormList}
         />
       }
         return(
