@@ -23,39 +23,39 @@ class ViewControl extends React.Component {
   }
 
   render(){
-    const auth = this.props.firebase.auth();
-    if (!isLoaded(auth)) {
-      return (
+    // const auth = this.props.firebase.auth();
+    // if (!isLoaded(auth)) {
+    //   return (
+    //     <React.Fragment>
+    //       <h1>Loading...</h1>
+    //     </React.Fragment>
+    //   );
+    // }
+    // if (isLoaded(auth) && auth.currentUser == null) {
+    //   return (
+    //     <React.Fragment>
+    //       <h1>You must be signed in to access the application.</h1>
+    //       <Link to="/signin">Sign In</Link>
+    //       <Link to="/signup">Sign Up</Link>
+    //     </React.Fragment>
+    //   );
+    // }
+    // if (isLoaded(auth) && auth.currentUser != null) {
+    // }
+    let currentlyVisibleState = null;
+
+    if(this.state.creatingDialyInventoryForm){
+      currentlyVisibleState = <NewDailyInventoryForm/>
+    } else if (this.state.viewingHomePage){
+      currentlyVisibleState = <HomePage 
+      onSelectingCreateCustomInventoryForm={this.handleSelectingCreateCustomInventoryForm}
+      />
+    }
+      return(
         <React.Fragment>
-          <h1>Loading...</h1>
+          {currentlyVisibleState}
         </React.Fragment>
-      );
-    }
-    if (isLoaded(auth) && auth.currentUser == null) {
-      return (
-        <React.Fragment>
-          <h1>You must be signed in to access the application.</h1>
-          <Link to="/signin">Sign In</Link>
-          <Link to="/signup">Sign Up</Link>
-        </React.Fragment>
-      );
-    }
-    if (isLoaded(auth) && auth.currentUser != null) {
-      let currentlyVisibleState = null;
-  
-      if(this.state.creatingDialyInventoryForm){
-        currentlyVisibleState = <NewDailyInventoryForm/>
-      } else if (this.state.viewingHomePage){
-        currentlyVisibleState = <HomePage 
-        onSelectingCreateCustomInventoryForm={this.handleSelectingCreateCustomInventoryForm}
-        />
-      }
-        return(
-          <React.Fragment>
-            {currentlyVisibleState}
-          </React.Fragment>
-        )
-    }
+      )
   }
 }
 
