@@ -12,7 +12,8 @@ class ViewControl extends React.Component {
     this.state = {
       creatingDailyInventoryForm: false,
       fillingOutDailyInventoryForm: false,
-      viewingHomePage: true
+      viewingHomePage: true,
+      selectedInventoryForm: null
     }
   }
 
@@ -24,12 +25,27 @@ class ViewControl extends React.Component {
     })
   }
 
-  handleSelectingFillOutYourDailyInventoryForm = () => {
-    this.setState({
-      creatingDialyInventoryForm: false,
-      viewingHomePage: false,
-      fillingOutDailyInventoryForm: true
-    })
+  handleSelectingFillOutYourDailyInventoryForm = (id) => {
+    this.props.firestore
+      .get({ collection: "inventory-forms", doc: id })
+      .then((dailyInventory) => {
+        const firestoreInventoryForm = {
+          q1: dailyInventory.get("q1"),
+          q2: dailyInventory.get("q2"),
+          q3: dailyInventory.get("q3"),
+          q4: dailyInventory.get("q4"),
+          q5: dailyInventory.get("q5"),
+          q6: dailyInventory.get("q6"),
+          q7: dailyInventory.get("q7"),
+          q8: dailyInventory.get("q8")
+        }
+        this.setState({
+          creatingDialyInventoryForm: false,
+          viewingHomePage: false,
+          fillingOutDailyInventoryForm: true,
+          selectedInventoryForm: firestoreInventoryForm
+      })
+    });
   }
 
   render(){
@@ -56,10 +72,12 @@ class ViewControl extends React.Component {
       if(this.state.creatingDialyInventoryForm){
         currentlyVisibleState = <NewDailyInventoryForm/>
       } else if(this.state.fillingOutDailyInventoryForm){
-        currentlyVisibleState = <DailyInventory/>
+        currentlyVisibleState = <DailyInventory
+          onSelectingFillOutYourDailyInventoryForm={this.handleSelectingFillOutYourDailyInventoryForm}
+        />
       } else if (this.state.viewingHomePage){
         currentlyVisibleState = <HomePage 
-        onSelectingCreateCustomInventoryForm={this.handleSelectingCreateCustomInventoryForm}
+          onSelectingCreateCustomInventoryForm={this.handleSelectingCreateCustomInventoryForm}
         />
       }
         return(
