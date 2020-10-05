@@ -1,5 +1,6 @@
 import React from "react";
 import firebase from "firebase/app";
+import { Link } from "react-router-dom";
 
 function SignIn(){
   function doSignIn(event) {
@@ -40,6 +41,7 @@ function SignIn(){
           placeholder='Password' />
         <button type='submit'>Sign in</button>
       </form>
+      <Link to="/">Go to homepage</Link>
       <h1>Sign Out</h1>
       <button onClick={doSignOut}>Sign out</button>
     </React.Fragment>

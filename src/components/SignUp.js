@@ -1,5 +1,6 @@
 import React from "react";
 import firebase from "firebase/app";
+import { Link } from "react-router-dom";
 
 function SignUp(){
   function doSignUp(event) {
@@ -26,6 +27,8 @@ function SignUp(){
           placeholder='Password' />
         <button type='submit'>Sign up</button>
       </form>
+      <Link to="/signin">Go to sign in</Link>
+      <Link to="/">Go to homepage</Link>
     </React.Fragment>
   );
 }
