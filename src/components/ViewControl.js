@@ -2,11 +2,12 @@ import React from 'react';
 import HomePage from './HomePage';
 import NewDailyInventoryForm from './daily-inventory/NewDailyInventoryForm';
 import { withFirestore, isLoaded } from "react-redux-firebase";
+import { Link } from "react-router-dom";
 
 class ViewControl extends React.Component {
 
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
     this.state = {
       creatingDailyInventoryForm: false,
       viewingHomePage: true
@@ -33,7 +34,9 @@ class ViewControl extends React.Component {
     if (isLoaded(auth) && auth.currentUser == null) {
       return (
         <React.Fragment>
-          <h1>You must be signed in to access the queue.</h1>
+          <h1>You must be signed in to access the application.</h1>
+          <Link to="/signin">Sign In</Link>
+          <Link to="/signup">Sign Up</Link>
         </React.Fragment>
       );
     }
