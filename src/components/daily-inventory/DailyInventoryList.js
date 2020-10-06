@@ -8,7 +8,7 @@ function DailyInventoryList(props){
 
   useFirestoreConnect([{ collection: "inventoryForms" }]);
 
-  const dailyInventoryForms = useSelector((state) => state.firestore.ordered.inventoryForms);
+  const dailyInventoryForms = useSelector((state) => state.firestore.inventoryForms);
 
   if(isLoaded(dailyInventoryForms)){
     return (
