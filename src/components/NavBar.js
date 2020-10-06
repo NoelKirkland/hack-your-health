@@ -16,3 +16,5 @@ function NavBar(){
     </React.Fragment>
   )
 }
+
+export default NavBar;
