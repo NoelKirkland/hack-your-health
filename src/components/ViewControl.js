@@ -1,10 +1,10 @@
 import React from 'react';
 import HomePage from './HomePage';
 import NewDailyInventoryForm from './daily-inventory/NewDailyInventoryForm';
-// import DailyInventory from './daily-inventory/DailyInvetory'
+import DailyInventoryDetails from './daily-inventory/DailyInventoryDetails'
 import DailyInventoryList from './daily-inventory/DailyInventoryList.js'
 import { withFirestore, isLoaded } from "react-redux-firebase";
-import { Link } from "react-router-dom";
+import { Alert, Container, Col, Row } from 'react-bootstrap';
 
 class ViewControl extends React.Component {
 
@@ -18,10 +18,24 @@ class ViewControl extends React.Component {
     }
   }
 
+  handleAddingNewResponseToList = () => {
+    this.setState({
+      selectedInventoryForm: null
+    })
+  };
+
+  handleClickingHomeButton = () => {
+    this.setState({
+      creatingDailyInventoryForm: false,
+      viewingDailyInventoryList: false,
+      viewingHomePage: true
+    });
+  }
+
   handleSelectingCreateCustomInventoryForm = () => {
     console.log("handleSelectingCreateCustomInventoryForm is triggered");
     this.setState({
-      creatingDialyInventoryForm: true,
+      creatingDailyInventoryForm: true,
       viewingHomePage: false
     })
   }
@@ -57,44 +71,68 @@ class ViewControl extends React.Component {
   }
 
   render(){
-    const auth = this.props.firebase.auth();
-    if (!isLoaded(auth)) {
-      return (
+    // const auth = this.props.firebase.auth();
+    // if (!isLoaded(auth)) {
+    //   return (
+    //     <React.Fragment>
+    //       <h1>Loading...</h1>
+    //     </React.Fragment>
+    //   );
+    // }
+    // if (isLoaded(auth) && auth.currentUser == null) {
+    //   return (
+    //     <React.Fragment>
+    //       <Container>
+    //         <Container>
+    //           <Alert variant='danger'>
+    //             <Alert.Heading>Uh oh!</Alert.Heading>
+    //             You must be 
+    //               <Alert.Link href="/signin"> signed in </Alert.Link>
+    //             to access the application. Or, 
+    //               <Alert.Link href="/signup"> sign up </Alert.Link>
+    //             if you haven't already created an account.
+    //           </Alert>
+    //         </Container>
+    //       </Container>
+    //     </React.Fragment>
+    //   );
+    // }
+    // if (isLoaded(auth) && auth.currentUser != null) {
+    // }
+    let currentlyVisibleState = null;
+    if(this.state.selectedInventoryForm !== null){
+      currentlyVisibleState = <DailyInventoryDetails
+        onNewResponseCreation={this.handleAddingNewResponseToList}
+        dailyInventory={this.state.selectedInventoryForm}
+      />
+    } else if(this.state.creatingDailyInventoryForm){
+      currentlyVisibleState = <NewDailyInventoryForm/>
+    } else if(this.state.viewingDailyInventoryList){
+      currentlyVisibleState = <DailyInventoryList
+        onDailyInventorySelection={this.handleViewingSelectedDailyInventoryForm}
+      />
+    } else if (this.state.viewingHomePage){
+      currentlyVisibleState = <HomePage 
+        onSelectingCreateCustomInventoryForm={this.handleSelectingCreateCustomInventoryForm}
+        onSelectingViewDailyInventoryFormList={this.handleSelectingViewDailyInventoryFormList}
+      />
+    }
+      return(
         <React.Fragment>
-          <h1>Loading...</h1>
+          {currentlyVisibleState}
+          <Container>
+            <Row>
+              <Col>
+              </Col>
+              <Col>
+                <button class="home-button" onClick={this.handleClickingHomeButton}>Home</button>
+              </Col>
+              <Col>
+              </Col>
+            </Row>
+          </Container>
         </React.Fragment>
-      );
-    }
-    if (isLoaded(auth) && auth.currentUser == null) {
-      return (
-        <React.Fragment>
-          <h1>You must be signed in to access the application.</h1>
-          <Link to="/signin">Sign In</Link>
-          <Link to="/signup">Sign Up</Link>
-        </React.Fragment>
-      );
-    }
-    if (isLoaded(auth) && auth.currentUser != null) {
-      let currentlyVisibleState = null;
-  
-      if(this.state.creatingDialyInventoryForm){
-        currentlyVisibleState = <NewDailyInventoryForm/>
-      } else if(this.state.viewingDailyInventoryList){
-        currentlyVisibleState = <DailyInventoryList
-          onDailyInventorySelection={this.handleViewingSelectedDailyInventoryForm}
-        />
-      } else if (this.state.viewingHomePage){
-        currentlyVisibleState = <HomePage 
-          onSelectingCreateCustomInventoryForm={this.handleSelectingCreateCustomInventoryForm}
-          onSelectingViewDailyInventoryFormList={this.handleSelectingViewDailyInventoryFormList}
-        />
-      }
-        return(
-          <React.Fragment>
-            {currentlyVisibleState}
-          </React.Fragment>
-        )
-    }
+      )
   }
 }
 

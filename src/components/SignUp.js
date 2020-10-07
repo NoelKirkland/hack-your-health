@@ -1,6 +1,7 @@
 import React from "react";
 import firebase from "firebase/app";
-import { Link } from "react-router-dom";
+import styled from 'styled-components';
+import Container from 'react-bootstrap/Container'
 
 function SignUp(){
   function doSignUp(event) {
@@ -13,22 +14,32 @@ function SignUp(){
       console.log(error.message);
     });
   }
+
+  const SignUp = styled.b`
+    font-size: 20px;
+  `;
+
+
   return (
     <React.Fragment>
-      <h1>Sign up</h1>
-      <form onSubmit={doSignUp}>
-        <input
-          type='text'
-          name='email'
-          placeholder='email' />
-        <input
-          type='password'
-          name='password'
-          placeholder='Password' />
-        <button type='submit'>Sign up</button>
-      </form>
-      <Link to="/signin">Go to sign in</Link>
-      <Link to="/">Go to homepage</Link>
+      <Container>
+        <nav className="navbar navbar-inverse">
+          <div className="container-fluid">
+            <form onSubmit={doSignUp} className="navbar-form navbar-left">
+              <SignUp>Sign up: </SignUp>
+              <input
+                type='text'
+                name='signinEmail'
+                placeholder='email'/>
+              <input
+                type='password'
+                name='signinPassword'
+                placeholder='Password'/>
+              <button type="submit">Submit</button>
+            </form>
+          </div>
+        </nav>
+      </Container>
     </React.Fragment>
   );
 }

@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import "bootstrap/dist/css/bootstrap.min.css";
-import {Navbar, Container} from 'react-bootstrap';
+import { Navbar, Container } from 'react-bootstrap';
 
 const Border = styled.div`
 border: 1px solid #000000;

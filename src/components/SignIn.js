@@ -36,25 +36,25 @@ function SignIn(){
   return (
     <React.Fragment>
       <Container>
-      <nav className="navbar navbar-inverse">
-        <div className="container-fluid">
-          <form onSubmit={doSignIn} className="navbar-form navbar-left">
-            <SignIn>Sign in: </SignIn>
-          <input
-                  type='text'
-                  name='signinEmail'
-                  placeholder='email'/>
-                <input
-                  type='password'
-                  name='signinPassword'
-                  placeholder='Password'/>
-            <button type="submit">Submit</button>
-          </form>
-          <div class="nav navbar-nav navbar-right">
-            <button onClick={doSignOut}>Sign out</button>
+        <nav className="navbar navbar-inverse">
+          <div className="container-fluid">
+            <form onSubmit={doSignIn} className="navbar-form navbar-left">
+              <SignIn>Sign in: </SignIn>
+            <input
+                    type='text'
+                    name='signinEmail'
+                    placeholder='email'/>
+                  <input
+                    type='password'
+                    name='signinPassword'
+                    placeholder='Password'/>
+              <button type="submit">Submit</button>
+            </form>
+            <div class="nav navbar-nav navbar-right">
+              <button onClick={doSignOut}>Sign out</button>
+            </div>
           </div>
-        </div>
-      </nav>
+        </nav>
       </Container>
     </React.Fragment>
   );

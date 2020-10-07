@@ -1,6 +1,6 @@
 # Hack Your Health
 
-### By Noel Kirkland - date
+### By Noel Kirkland - 10/7/2020
 
 •[](#1)<br>
 •[](#2)<br>
@@ -9,17 +9,9 @@
 •[](#5)<br>
 •[](#6)
 
-## MVP with James - October 1st, 2020
-* Progress report (MoodData) sounds like it will need to be a stretch goal.
-
-* _Just the Calendar_ half or _just the DailyInventory_ half of my component tree would be a functioning application and should maybe be my MVP.
-    - If I can create and flesh out either the Calendar part or the DailyInventory part in the first two days of capstone week then think about tying in the other half.
-
-* Would like to incorporate authentication in my MVP but it could potentially eat up too much of my time
-
-* James planned out his project where he anticipates to complete his MVP with an entire day remaining in the week.
-
-* Pick a half to implement first. Build that half as if it was your entire project. If the whole half (either the Calendar or the DailyInventory half) is done. Styled, polished and everything
+<!-- copy and paste. Modify height and width if desired. -->
+<iframe class="embeddedObject shadow resizable" name="embedded_content" scrolling="no" frameborder="0" type="text/html" 
+        style="overflow:hidden;" src="https://www.screencast.com/users/NoelKirkland9269/folders/Capture/media/d27e6a0a-72a1-4ab4-a038-63efb544e002/embed" height="760" width="1396" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
 ## Description
 
@@ -29,33 +21,47 @@ Hack your Health is an application that will help user's take charge of their me
 
 This is a list of all of the components I will need to complete my application:
 
-* SignInGate
-* CreateProfile
-
 * ViewControl (only class component)
 
 * HomePage
 
-* Calendar
-* CalendarType
-* ReusableCalendarTypeForm
-* NewCalendarTypeForm
-* EditCalendarTypeForm
+* authentication:
+    * SignUp
+    * SignIn
 
-* DailyInventory
-* ReusableDailyInventoryForm
-* NewDailyInventoryForm
-* EditDailyInventoryForm
-* Response
-* ResponseList
+* calendar
+    * Calendar
+    * CalendarType
+    * ReusableCalendarTypeForm
+    * NewCalendarTypeForm
+    * EditCalendarTypeForm
+
+* daily inventory:
+    * DailyInventory
+    * DailyInventoryList
+    * ReusableDailyInventoryForm
+    * NewDailyInventoryForm
+    * EditDailyInventoryForm
+    * Response
+    * ResponseList
+
+* returned data
+    * MoodData
 
 ## Component tree diagram
 
-#### First draft
-![](hack-your-health-component-tree-draft1.png)
+#### First draft:
+<hr/>
 
-#### Second draft
+![](hack-your-health-component-tree-draft1.png)
+<hr/>
+
+#### Second draft:
+<hr/>
+
 ![](hack-your-health-component-tree-draft2.png)
+<hr/>
+
 
 ## Commands I have used so far
 
@@ -79,22 +85,43 @@ npm install react-bootstrap bootstrap
 
 ## Production flow
 
-create ViewControl
+1. create ViewControl
 
-create HomePage
+2. create HomePage
 
-create all components in daily-inventory directory using only shared and local state
+3. create SignIn and SignUp components and make sure they are working correctly
 
-integrate redux
+4. create all components in daily-inventory directory and integrate redux
 
-integrate firestore
+5. create all components in calendar directory
 
-create all components in calendar directory using the firestore off the bat
+6. style and polish
 
-create SignInGate and CreateProfile component and make sure they are working correctly
+7. make sure readme is all up to date and polished
 
-style and polish
+8. create demonstration video and get pitch down
 
-make sure readme is all up to date and polished
+## Known bugs
 
-create demonstration video and get pitch down
+Currently, the calendar half of my application has yet to be built out. Right now the user can create/edit/delete multiple daily inventory forms, fill out their custom forms and view their responses.
+Once the calendar components have been built out I can use the data collected to create the MoodData component.
+
+## Support and Contact Details
+
+If there are any issues or questions contact me at noelkirkland@gmail.com
+
+## Technologies Used <a name="5"></a>
+
+* Javascript
+* React
+* React-Redux
+* Firestore
+* React-Bootstrap & Styled Components
+* HTML & CSS
+* Markdown
+
+### License
+
+`*` This project uses the following license: [MIT](https://opensource.org/licenses/MIT)
+
+Intellectual property of Noel R. Kirkland - 2020
